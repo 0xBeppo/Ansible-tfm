@@ -1,0 +1,4 @@
+---
+- name: Instalar rabbitmq docker image
+  import_tasks: rabbit_installation.yml
+  tags: installation

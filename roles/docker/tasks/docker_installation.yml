@@ -1,0 +1,43 @@
+---
+- name: Update Repository
+  apt:
+    update_cache: yes
+
+- name: Uninstall old versions
+  apt:
+    name:
+      - docker
+      - docker-engine
+      - docker.io
+      - containerd
+      - runc
+    state: absent
+
+- name: Instalar paquetes para permitir a apt usar HTTPS
+  apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+    state: present
+
+- name: Añadir la GPG key oficial de Docker
+  shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg"
+
+- name: Añadir el repositorio
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian buster stable
+    state: present
+
+- name: Update Repository
+  apt:
+    update_cache: yes
+
+- name: Install Docker Engine
+  apt:
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present

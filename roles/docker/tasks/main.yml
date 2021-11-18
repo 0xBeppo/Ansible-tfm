@@ -1,0 +1,4 @@
+---
+- name: Instalar docker
+  import_tasks: docker_installation.yml
+  tags: installation

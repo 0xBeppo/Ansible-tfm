@@ -1,0 +1,18 @@
+---
+- hosts: testing
+  become: yes
+  become_method: sudo
+  roles:
+    - rabbitmq
+#- hosts: mysql
+#  become: yes
+#  become_method: sudo
+#  roles:
+#    - mariadb
+
+#- hosts: docker
+#  become: yes
+#  become_method: sudo
+#  roles:
+#    - docker
+    

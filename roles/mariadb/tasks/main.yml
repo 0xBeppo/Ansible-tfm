@@ -1,0 +1,13 @@
+---
+- name: Instalar mariadb
+  import_tasks: mariadb_installation.yml
+  tags: installation
+
+#- name: Configurar mysql
+#  import_tasks: mysql_configuration.yml
+#  tags: installation,configuration
+
+#- name: Stop mysql
+#  import_tasks: mysql_stop.yml
+#  tags: stop
+
