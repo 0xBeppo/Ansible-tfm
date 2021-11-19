@@ -1,0 +1,29 @@
+---
+- name: Send suricata.tar.gz file
+  copy:
+    src: roles/suricata/files/suricata-6.0.4.tar.gz
+    dest: /tmp/suricata-6.0.4.tar.gz
+    owner: admin
+    group: admin
+    mode: '600'
+
+- name: Unarchive a suticata compressed file
+  unarchive:
+    src: /tmp/suricata-6.0.4.tar.gz
+    dest: /tmp/suricata
+    remote_src: yes
+
+- name: Configure uncompressed suricata
+  shell:
+    cmd: "./configure"
+    chdir: /tmp/suricata
+
+- name: Compile suricata
+  shell:
+    cmd: make
+    chdir: /tmp/suricata
+
+- name: Install suricata
+  shell:
+    cmd: make install
+    chdir: /tmp/suricata

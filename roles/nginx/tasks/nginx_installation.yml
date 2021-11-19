@@ -1,0 +1,9 @@
+---
+- name: Update Repository
+  apt:
+    update_cache: yes
+
+- name: Instalar nginx
+  apt:
+    name: nginx
+    state: present

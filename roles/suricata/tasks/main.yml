@@ -1,0 +1,4 @@
+---
+- name: Instalar suricata
+  import_tasks: suricata_installation.yml
+  tags: installation

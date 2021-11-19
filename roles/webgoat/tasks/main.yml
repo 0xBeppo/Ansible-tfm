@@ -1,0 +1,4 @@
+---
+- name: Instalar webgoat docker image
+  import_tasks: webgoat_installation.yml
+  tags: installation
