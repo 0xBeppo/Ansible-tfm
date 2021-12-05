@@ -1,0 +1,29 @@
+---
+- name: Allow ssh from my IP
+  community.general.ufw:
+    rule: allow
+    port: ssh
+    proto: tcp
+    from_ip: 81.0.7.184
+
+- name: Allow http traffic
+  community.general.ufw:
+    rule: allow
+    port: http
+    proto: tcp
+
+- name: Allow outgoing traffic
+  community.general.ufw:
+    rule: allow
+    direction: out
+
+- name: Deny incoming traffic
+  community.general.ufw:
+    rule: reject
+    direction: in
+    log: yes
+
+- name: Enable UFW
+  community.general.ufw:
+    state: enabled
+

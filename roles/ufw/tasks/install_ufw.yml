@@ -3,8 +3,7 @@
   apt:
     update_cache: yes
 
-- name: Install suricata
+- name: Instalar ufw
   apt:
-    name:
-      - suricata
+    name: ufw
     state: present

@@ -1,0 +1,8 @@
+---
+- name: Install UFW
+  import_tasks: install_ufw.yml
+  tags: installation
+
+- name: Configure UFW
+  import_tasks: configure_ufw.yml
+  tags: configuration

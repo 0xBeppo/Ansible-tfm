@@ -1,0 +1,10 @@
+---
+- name: Update repository
+  apt:
+    update_cache: yes
+
+- name: Install Rsyslog
+  apt:
+    name: rsyslog
+    state: present
+  

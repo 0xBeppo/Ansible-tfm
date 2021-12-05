@@ -1,0 +1,8 @@
+---
+- name: Install Rsyslog
+  import_tasks: install_rsyslog.yml
+  tags: installation
+
+- name: Configure Rsyslog
+  import_tasks: rsyslog_config.yml
+  tags: configure

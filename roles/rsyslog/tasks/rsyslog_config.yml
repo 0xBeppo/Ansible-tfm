@@ -3,8 +3,7 @@
   apt:
     update_cache: yes
 
-- name: Install suricata
+- name: Instalar rsyslog
   apt:
-    name:
-      - suricata
+    name: rsyslog
     state: present
