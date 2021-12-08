@@ -5,4 +5,4 @@
 
 - name: Configure Rsyslog
   import_tasks: rsyslog_config.yml
-  tags: configure
+  tags: configuration

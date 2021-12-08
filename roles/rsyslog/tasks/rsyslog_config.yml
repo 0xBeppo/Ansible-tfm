@@ -1,9 +1,25 @@
 ---
-- name: Update Repository
-  apt:
-    update_cache: yes
+- name: Send authpriv events to Qradar
+  lineinfile:
+    path: /etc/rsyslog.conf
+    line: authpriv.*@192.168.1.160 # Hay que cambiar la IP para que sea modificable
 
-- name: Instalar rsyslog
-  apt:
-    name: rsyslog
-    state: present
+- name: Send Emergency events to Qradar
+  lineinfile:
+    path: /etc/rsyslog.conf
+    line: "*.emerg@192.168.1.160"
+
+- name: Send alert events to Qradar
+  lineinfile:
+    path: /etc/rsyslog.conf
+    line: "*.alert@192.168.1.160"
+
+- name: Send critical events to Qradar
+  lineinfile:
+    path: /etc/rsyslog.conf
+    line: "*.crit@192.168.1.160"
+
+- name: reload Rsyslog configuration
+  systemd:
+    state: restarted
+    name: rsyslog.service

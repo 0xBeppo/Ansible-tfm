@@ -6,6 +6,12 @@
     proto: tcp
     from_ip: 81.0.7.184
 
+- name: Allow rsyslog traffic
+  community.general.ufw:
+    rule: allow
+    port: 514
+    proto: udp
+
 - name: Allow http traffic
   community.general.ufw:
     rule: allow

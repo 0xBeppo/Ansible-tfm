@@ -7,4 +7,10 @@
   apt:
     name: rsyslog
     state: present
+
+- name: Enable Rsyslog
+  systemd:
+    state: started
+    name: rsyslog.service
+    enabled: yes
   

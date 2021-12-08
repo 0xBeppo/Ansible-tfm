@@ -3,7 +3,7 @@
   become: yes
   become_method: sudo
   roles:
-    - suricata
+    - rsyslog
 
 #- hosts: mysql
 #  become: yes
@@ -17,7 +17,7 @@
 #  roles:
 #    - docker
     
-#- hosts: rabbitmq
+#- hosts: rabbit
 #  become: yes
 #  become_method: sudo
 #  roles:
@@ -34,5 +34,4 @@
 #  become_method: sudo
 #  roles:
 #    - nginx
-#    - suricata
-#    - iptables
+#    - ufw
