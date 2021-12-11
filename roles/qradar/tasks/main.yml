@@ -1,0 +1,6 @@
+---
+- name: Instalar Apache DSM
+  import_tasks: apache_dsm_install.yml
+  tags: 
+    - deploy
+    - installation

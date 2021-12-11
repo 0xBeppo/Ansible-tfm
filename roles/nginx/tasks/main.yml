@@ -1,4 +1,12 @@
 ---
 - name: Instalar Nginx
   import_tasks: nginx_installation.yml
-  tags: installation
+  tags: 
+    - deploy
+    - installation
+
+- name: Configuring NGINX HTTP Server to communicate with QRadar
+  import_tasks: configure_nginx.yml
+  tags:
+    - deploy
+    - configuration

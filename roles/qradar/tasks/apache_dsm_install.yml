@@ -1,0 +1,22 @@
+---
+- name: Copy Apache rpm file
+  copy:
+    src: /files/DSM-ApacheWebserver-7.3.rpm
+    dst: /tmp/
+    owner: root
+
+- name: Copy nginx rpm file
+  copy:
+    src: /files/DSM-NGINXHTTPServer-7.3.rpm
+    dst: /tmp/
+    owner: root
+
+- name: Instalar Apache DSM
+  yum:
+    name: /tmp/DSM-ApacheWebserver-7.3.rpm
+    state: present
+
+- name: Instalar Nginx DSM
+  yum:
+    name: /tmp/DSM-NGINXHTTPServer-7.3.rpm
+    state: present

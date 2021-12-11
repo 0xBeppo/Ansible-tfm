@@ -1,0 +1,18 @@
+---
+- name: Add syslog server configuration under http block
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    state: present
+    insertafter: 'http {'
+    line: "\naccess_log syslog:server={{ qradar_ip }}:514,facility=local7,severity=info,tag=nginx qradar;"
+    
+- name: Add LEEF format logging under http block
+  lineinfile:
+    path: /etc/nginx/nginx.conf
+    state: present
+    insertafter: 'http {'
+    line: "\nlog_format\tqradar\tLEEF:1.0|NGINX|NGINX|$nginx_version|$status|devTime=$time_local\tdevTimeFormat=dd/MMM/yyyy:HH:mm:ss Z\tsrc=$remote_addr\tdst=$server_addr\tdstPort=$server_port\tproto=$server_protocol\tusrName=$remote_user\trequest=$request\tbody_bytes_sent=$body_bytes_sent\thttp_referer=$http_referer\thttp_true_client_ip=$http_true_client_ip\thttp_user_agent=$http_user_agent\thttp_x_header=$http_x_header\thttp_x_forwarded_for=$http_x_forwarded_for\trequest_time=$request_time\tupstream_response_time=$upstream_response_time\tpipe=$pipe\turi_query=$query_string\turi_path=$uri\tcookie=$http_cookie"
+
+- name: Reload nginx configuration
+  shell:
+    cmd: nginx -s reload
