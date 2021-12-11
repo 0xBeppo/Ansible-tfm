@@ -3,14 +3,13 @@
   apt:
     update_cache: yes
 
-- name: Install Rsyslog
+- name: Install Auditd
   apt:
-    name: rsyslog
+    name: auditd
     state: present
 
-- name: Start and enable Rsyslog
+- name: Start and enable Auditd
   systemd:
     state: started
-    name: rsyslog.service
+    name: auditd.service
     enabled: yes
-  

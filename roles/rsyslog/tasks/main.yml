@@ -1,8 +1,24 @@
 ---
 - name: Install Rsyslog
   import_tasks: install_rsyslog.yml
-  tags: installation
+  tags: 
+    - deploy
+    - installation
 
+- name: Install auditd
+  import_tasks: install_auditd.yml
+  tags: 
+    - deploy
+    - installation
+
+- name: Configure auditd
+  import_tasks: auditd_config.yml
+  tags:
+    - deploy
+    - configuration
+    
 - name: Configure Rsyslog
   import_tasks: rsyslog_config.yml
-  tags: configuration
+  tags: 
+    - deploy
+    - configuration

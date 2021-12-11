@@ -1,23 +1,9 @@
 ---
-- name: Send authpriv events to Qradar
-  lineinfile:
-    path: /etc/rsyslog.conf
-    line: authpriv.*@192.168.1.160 # Hay que cambiar la IP para que sea modificable
-
-- name: Send Emergency events to Qradar
-  lineinfile:
-    path: /etc/rsyslog.conf
-    line: "*.emerg@192.168.1.160"
-
-- name: Send alert events to Qradar
-  lineinfile:
-    path: /etc/rsyslog.conf
-    line: "*.alert@192.168.1.160"
-
-- name: Send critical events to Qradar
-  lineinfile:
-    path: /etc/rsyslog.conf
-    line: "*.crit@192.168.1.160"
+- name: Copy rsyslog config file
+  template:
+    src: rsyslog.j2
+    dest: /etc/rsyslog.conf
+    backup: yes
 
 - name: reload Rsyslog configuration
   systemd:

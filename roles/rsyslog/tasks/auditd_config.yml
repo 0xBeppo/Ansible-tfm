@@ -1,0 +1,11 @@
+---
+- name: Copy auditd syslog plugin configuration
+  template:
+    src: auditd.j2
+    dest: /etc/audisp/plugins.d/syslog.conf
+    backup: yes
+
+- name: reload Auditd configuration
+  systemd:
+    state: restarted
+    name: auditd.service
